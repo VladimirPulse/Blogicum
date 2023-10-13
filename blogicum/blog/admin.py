@@ -7,40 +7,41 @@ from .models import Category, Location, Post
 admin.site.empty_value_display = 'Не задано'
 
 
-class IceCreamInline(admin.TabularInline):
-    model = IceCream
-    extra = 0
+class PostInline(admin.TabularInline):
+   model = Post
+   extra = 0
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = (
-        IceCreamInline,
-    )
+   inlines = (
+       PostInline,
+   )
 
 
-class IceCreamAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     list_display = (
         'title',
-        'description',
-        'is_published',
-        'is_on_main',
+        'text',
+        'pub_date',
+        'author',
+        'location',
         'category',
-        'wrapper'
+        'is_published',
+        'created_at'
     )
     list_editable = (
         'is_published',
-        'is_on_main',
         'category'
     )    
     search_fields = ('title',) 
     list_filter = ('category',)
     list_display_links = ('title',)
     empty_value_display = 'Не задано'
-    filter_horizontal = ('toppings',)
 
 
-# Регистрируем кастомное представление админ-зоны
-admin.site.register(IceCream, IceCreamAdmin)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin) 
 admin.site.register(Location)
-admin.site.register(Post)
+
+# Имя пользователя: DJANGO_blogicum
+
