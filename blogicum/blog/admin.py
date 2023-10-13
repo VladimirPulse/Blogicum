@@ -8,14 +8,14 @@ admin.site.empty_value_display = 'Не задано'
 
 
 class PostInline(admin.TabularInline):
-   model = Post
-   extra = 0
+    model = Post
+    extra = 0
 
 
 class CategoryAdmin(admin.ModelAdmin):
-   inlines = (
+    inlines = (
        PostInline,
-   )
+       )
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -32,16 +32,15 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = (
         'is_published',
         'category'
-    )    
-    search_fields = ('title',) 
+    )
+    search_fields = ('title',)
     list_filter = ('category',)
     list_display_links = ('title',)
     empty_value_display = 'Не задано'
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Category, CategoryAdmin) 
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Location)
 
 # Имя пользователя: DJANGO_blogicum
-
