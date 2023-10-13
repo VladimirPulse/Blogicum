@@ -14,8 +14,8 @@ class PostInline(admin.TabularInline):
 
 class CategoryAdmin(admin.ModelAdmin):
     inlines = (
-       PostInline,
-       )
+        PostInline,
+    )
 
 
 class PostAdmin(admin.ModelAdmin):

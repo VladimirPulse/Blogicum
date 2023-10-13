@@ -7,13 +7,13 @@ posts = Post.objects.all().select_related(
     'author',
     'location',
     'category'
-    ).filter(
-        pub_date__lte=datetime.now(),
-        is_published=True,
-        category__is_published=True
-    ).order_by(
-        '-pub_date'
-    )
+).filter(
+    pub_date__lte=datetime.now(),
+    is_published=True,
+    category__is_published=True
+).order_by(
+    '-pub_date'
+)
 
 
 def index(request):
