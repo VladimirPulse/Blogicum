@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+
 from core.models import PublishedModel
 
 
@@ -16,8 +17,10 @@ class Category(PublishedModel):
         max_length=64,
         unique=True,
         verbose_name='Идентификатор',
-        help_text='Идентификатор страницы для URL; '
-        + 'разрешены символы латиницы, цифры, дефис и подчёркивание.'
+        help_text=(
+            'Идентификатор страницы для URL; '
+            'разрешены символы латиницы, цифры, дефис и подчёркивание.'
+        )
     )
 
     class Meta:
@@ -31,6 +34,7 @@ class Category(PublishedModel):
 class Location(PublishedModel):
     name = models.CharField(
         max_length=256,
+        unique=True,
         verbose_name='Название места'
     )
 
@@ -47,8 +51,10 @@ class Post(PublishedModel):
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата и время публикации',
-        help_text='Если установить дату и время в будущем'
-        + ' — можно делать отложенные публикации.'
+        help_text=(
+            'Если установить дату и время в будущем'
+            ' — можно делать отложенные публикации.'
+        )
     )
     author = models.ForeignKey(
         User,
