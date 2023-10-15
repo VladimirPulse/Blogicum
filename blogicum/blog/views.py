@@ -21,9 +21,9 @@ def index(request):
         request,
         'blog/index.html',
         {'post_list': posts().filter(
-                pub_date__lte=datetime.now(),
-                is_published=True,
-                category__is_published=True
+            pub_date__lte=datetime.now(),
+            is_published=True,
+            category__is_published=True
         ).order_by('-pub_date')[:PUBLISH_POSTS]}
     )
 
