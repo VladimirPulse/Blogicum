@@ -39,6 +39,6 @@ def category_posts(request, category_slug):
                                  slug=category_slug,
                                  is_published=True
                                  )
-    post_list = posts().filter(category=category)
+    post_list = posts().filter(category_id=category.pk)
     context = {'category': category, 'post_list': post_list}
     return render(request, 'blog/category.html', context)
