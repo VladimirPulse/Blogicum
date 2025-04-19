@@ -77,5 +77,6 @@ python manage.py runserver
 
 ---
 
-Автор
+Автор:
+
 Этот проект был разработан Кулаковым В.С., Контакт: VrachKulakovVS@mail.ru.
